@@ -41,11 +41,14 @@ func main() {
 	FA18CMap(warthog)
 	F16CMap(warthog)
 	JF17Map(warthog)
+	ChristenEagleMap(warthog)
 
-	dcsAgent.Register(&dcs.StringOutput{Addr: 0x0000, MaxLength: 16, Action: func(_ uint16, module string) {
+	dcsAgent.Register(&dcs.StringOutput{Addr: 0x0000, MaxLength: 24, Action: func(_ uint16, module string) {
 		if warthog.HasModule(module) {
 			alert.Sayf("mapping module %s", module)
 			warthog.SetModule(module)
+		} else {
+			alert.Sayf("unknonn module: %s", module)
 		}
 	}})
 	go dcsAgent.Receive()

@@ -136,15 +136,18 @@ func (a *dcsAgent) SendMsg(m DCSMsg) {
 func (a *dcsAgent) Receive() {
 	outputUDP, err := net.ResolveUDPAddr("udp", outputStreamAddr)
 	if err != nil {
+		fmt.Printf("Error resolving udp addr: %v\n", err)
 		panic(err)
 	}
 	inputUDP, err := net.ResolveUDPAddr("udp", inputStreamAddr)
 	if err != nil {
+		fmt.Printf("Error resolving udp addr: %v\n", err)
 		panic(err)
 	}
 
 	conn, err := net.ListenUDP("udp", outputUDP)
 	if err != nil {
+		fmt.Printf("Error listening to udp: %v\n", err)
 		panic(err)
 	}
 

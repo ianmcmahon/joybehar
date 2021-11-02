@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"fmt"
 	"time"
 
 	"github.com/ianmcmahon/joybehar/alert"
@@ -57,7 +56,7 @@ func (a *panelAgent) Receive() {
 				continue
 			}
 
-			fmt.Printf("%v\n", msg)
+			//fmt.Printf("%v\n", msg)
 			a.dcsAgent.SendMsg(msg)
 		}
 		alert.Say("Panel exited")
